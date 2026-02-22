@@ -13,7 +13,7 @@ import {
   Typography,
   IconButton,
 } from '@mui/material';
-import { LogOut, StickyNote, PlusCircle, User } from 'lucide-react';
+import { LogOut, StickyNote, PlusCircle } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 const drawerWidth = 240;

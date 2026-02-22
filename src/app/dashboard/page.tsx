@@ -16,6 +16,7 @@ import {
   Fab,
   IconButton,
 } from '@mui/material';
+import { cn } from '@/lib/utils';
 
 export default function DashboardPage() {
   const { data: notes, isLoading, error } = useNotes();
@@ -45,7 +46,13 @@ export default function DashboardPage() {
         <Grid container spacing={3}>
           {notes?.map((note: any) => (
             <Grid item xs={12} sm={6} md={4} key={note.id}>
-              <Card className="relative h-full hover:shadow-md transition-shadow border border-gray-200 rounded-xl overflow-visible">
+              <Card
+                className={cn(
+                  'relative h-full hover:shadow-md',
+                  'transition-shadow border',
+                  'border-gray-200 rounded-xl overflow-visible'
+                )}
+              >
                 <div className="absolute top-3 right-3 z-10">
                   <DropdownMenu.Root>
                     <DropdownMenu.Trigger asChild>
@@ -58,13 +65,23 @@ export default function DashboardPage() {
                     </DropdownMenu.Trigger>
 
                     <DropdownMenu.Portal>
-                      <DropdownMenu.Content className="bg-white p-1 rounded-lg shadow-lg border border-gray-100 min-w-[140px] z-50 animate-in fade-in zoom-in-95 duration-100">
+                      <DropdownMenu.Content
+                        className={cn(
+                          'bg-white p-1 rounded-lg shadow-lg',
+                          'border border-gray-100 min-w-[140px]',
+                          ' z-50 animate-in fade-in zoom-in-95 duration-100'
+                        )}
+                      >
                         <EditNoteModal
                           note={note}
                           trigger={
                             <DropdownMenu.Item
                               onSelect={(e) => e.preventDefault()}
-                              className="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 outline-none cursor-pointer rounded-md"
+                              className={cn(
+                                'flex items-center gap-2 px-3 py-2',
+                                'text-sm text-gray-700 hover:bg-gray-50',
+                                'outline-none cursor-pointer rounded-md'
+                              )}
                             >
                               <Edit2 size={14} /> Editar
                             </DropdownMenu.Item>
@@ -80,7 +97,11 @@ export default function DashboardPage() {
                               deleteNote(note.id);
                             }
                           }}
-                          className="flex items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 outline-none cursor-pointer rounded-md"
+                          className={cn(
+                            'flex items-center gap-2 px-3 py-2',
+                            'text-sm text-red-600 hover:bg-red-50',
+                            ' outline-none cursor-pointer rounded-md'
+                          )}
                         >
                           <Trash2 size={14} /> Excluir
                         </DropdownMenu.Item>

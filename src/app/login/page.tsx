@@ -15,6 +15,7 @@ import {
 } from '@mui/material';
 import Link from 'next/link';
 import { LogIn } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export default function LoginPage() {
   const { mutate, isPending, error } = useLogin();
@@ -30,7 +31,12 @@ export default function LoginPage() {
   const onSubmit = (data: LoginData) => mutate(data);
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+    <main
+      className={cn(
+        'min-h-screen flex items-center',
+        'justify-center bg-gray-50 px-4'
+      )}
+    >
       <Container maxWidth="xs">
         <Card className="p-8 shadow-xl border-0 rounded-2xl">
           <div className="flex flex-col items-center mb-8">
@@ -80,7 +86,10 @@ export default function LoginPage() {
               variant="contained"
               size="large"
               disabled={isPending}
-              className="bg-blue-600 hover:bg-blue-700 h-12 text-lg normal-case"
+              className={cn(
+                'bg-blue-600 hover:bg-blue-700',
+                'h-12 text-lg normal-case'
+              )}
             >
               {isPending ? (
                 <CircularProgress size={24} color="inherit" />

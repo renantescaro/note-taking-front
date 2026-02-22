@@ -1,10 +1,16 @@
 import Link from 'next/link';
 import { Button } from '@mui/material';
 import { StickyNote } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export default function Navbar() {
   return (
-    <nav className="flex items-center justify-between px-8 py-4 bg-white border-b border-gray-100">
+    <nav
+      className={cn(
+        'flex items-center justify-between',
+        'px-8 py-4 bg-white border-b border-gray-100'
+      )}
+    >
       <div className="flex items-center gap-2">
         <StickyNote className="text-blue-600" size={32} />
         <span className="text-xl font-bold tracking-tight text-gray-800">

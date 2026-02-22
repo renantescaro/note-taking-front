@@ -3,11 +3,12 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { TextField, Button, Typography, CircularProgress } from '@mui/material';
+import { TextField, Button, CircularProgress } from '@mui/material';
 import { X } from 'lucide-react';
 import { useCreateNote } from '@/hooks/useNotes';
 import { createNoteSchema, type CreateNoteData } from '@/schemas/note.schema';
 import { useState } from 'react';
+import { cn } from '@/lib/utils';
 
 export default function CreateNoteModal({
   trigger,
@@ -41,9 +42,22 @@ export default function CreateNoteModal({
       <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
 
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 animate-in fade-in duration-200" />
+        <Dialog.Overlay
+          className={cn(
+            'fixed inset-0 bg-black/40',
+            ' backdrop-blur-sm z-50',
+            'animate-in fade-in duration-200'
+          )}
+        />
 
-        <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-white rounded-2xl p-8 shadow-2xl z-50 focus:outline-none animate-in zoom-in-95 duration-200">
+        <Dialog.Content
+          className={cn(
+            'fixed top-1/2 left-1/2 -translate-x-1/2',
+            ' -translate-y-1/2 w-full max-w-md bg-white',
+            ' rounded-2xl p-8 shadow-2xl z-50',
+            ' focus:outline-none animate-in zoom-in-95 duration-200'
+          )}
+        >
           <div className="flex justify-between items-center mb-6">
             <Dialog.Title className="text-2xl font-bold text-gray-900">
               Nova Nota
