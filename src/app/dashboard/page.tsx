@@ -45,12 +45,20 @@ export default function DashboardPage() {
       ) : (
         <Grid container spacing={3}>
           {notes?.map((note: any) => (
-            <Grid item xs={12} sm={6} md={4} key={note.id}>
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              md={4}
+              lg={3}
+              key={note.id}
+              className={cn('w-full')}
+            >
               <Card
                 className={cn(
-                  'relative h-full hover:shadow-md',
-                  'transition-shadow border',
-                  'border-gray-200 rounded-xl overflow-visible'
+                  'relative h-full border border-gray-200 shadow-sm transition-all',
+                  'rounded-none md:rounded-xl',
+                  'w-full hover:border-gray-300'
                 )}
               >
                 <div className="absolute top-3 right-3 z-10">
@@ -121,7 +129,9 @@ export default function DashboardPage() {
                     variant="body2"
                     className="text-gray-600 line-clamp-3 mb-4"
                   >
-                    {note.content}
+                    {note.content.length > 20
+                      ? `${note.content.substring(0, 20)}...`
+                      : note.content}
                   </Typography>
                   <Typography
                     variant="caption"

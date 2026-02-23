@@ -44,62 +44,86 @@ export default function EditNoteModal({ note, trigger }: EditNoteProps) {
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50" />
-        <Dialog.Content
+        <Dialog.Overlay
           className={cn(
-            'fixed top-1/2 left-1/2 -translate-x-1/2',
-            '-translate-y-1/2 w-full max-w-md bg-white',
-            'rounded-2xl p-8 shadow-2xl z-50'
+            'fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999]',
+            ' flex items-center justify-center p-4'
           )}
         >
-          <div className="flex justify-between items-center mb-6">
-            <Dialog.Title className="text-2xl font-bold text-gray-900">
-              Editar Nota
-            </Dialog.Title>
-            <Dialog.Close className="text-gray-400 hover:text-gray-600">
-              <X size={24} />
-            </Dialog.Close>
-          </div>
-
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-            <TextField
-              fullWidth
-              label="Título"
-              {...register('title')}
-              error={!!errors.title}
-              helperText={errors.title?.message}
-            />
-            <TextField
-              fullWidth
-              label="Conteúdo"
-              multiline
-              rows={4}
-              {...register('content')}
-              error={!!errors.content}
-              helperText={errors.content?.message}
-            />
-
-            <div className="flex justify-end gap-3 mt-8">
-              <Dialog.Close asChild>
-                <Button variant="text" color="inherit">
-                  Cancelar
-                </Button>
+          <Dialog.Content
+            className={cn(
+              'bg-white rounded-md p-6 shadow-2xl',
+              'w-full max-w-[500px] max-h-[90vh]',
+              'flex flex-col focus:outline-none',
+              'md:w-[80vw] md:max-w-[800px] md:max-h-[85vh]'
+            )}
+          >
+            <div className="flex justify-between items-center mb-6 flex-shrink-0">
+              <Dialog.Title className="text-xl font-bold text-gray-900">
+                Editar Nota
+              </Dialog.Title>
+              <Dialog.Close className="text-gray-400 hover:text-gray-600 outline-none">
+                <X size={20} />
               </Dialog.Close>
-              <Button
-                type="submit"
-                variant="contained"
-                disabled={isPending}
-                className="bg-blue-600 hover:bg-blue-700"
-              >
-                {isPending ? (
-                  <CircularProgress size={24} color="inherit" />
-                ) : (
-                  'Salvar Alterações'
-                )}
-              </Button>
             </div>
-          </form>
-        </Dialog.Content>
+
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="flex flex-col flex-1 overflow-hidden"
+            >
+              <div className="flex flex-col gap-5 py-2 overflow-y-auto pr-1">
+                <TextField
+                  fullWidth
+                  label="Título"
+                  variant="outlined"
+                  {...register('title')}
+                  error={!!errors.title}
+                  helperText={errors.title?.message}
+                />
+
+                <TextField
+                  fullWidth
+                  label="Conteúdo"
+                  multiline
+                  minRows={4}
+                  maxRows={10}
+                  variant="outlined"
+                  {...register('content')}
+                  error={!!errors.content}
+                  helperText={errors.content?.message}
+                />
+              </div>
+
+              <div
+                className={cn(
+                  'flex justify-end gap-3 mt-6 pt-4',
+                  'border-t border-gray-100 flex-shrink-0'
+                )}
+              >
+                <Dialog.Close asChild>
+                  <Button variant="text" color="inherit">
+                    Cancelar
+                  </Button>
+                </Dialog.Close>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  disabled={isPending}
+                  className={cn(
+                    'bg-blue-600 hover:bg-blue-700',
+                    'px-6 py-2 normal-case shadow-none'
+                  )}
+                >
+                  {isPending ? (
+                    <CircularProgress size={24} color="inherit" />
+                  ) : (
+                    'Salvar'
+                  )}
+                </Button>
+              </div>
+            </form>
+          </Dialog.Content>
+        </Dialog.Overlay>
       </Dialog.Portal>
     </Dialog.Root>
   );

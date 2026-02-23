@@ -45,7 +45,7 @@ export default function CreateNoteModal({
         <Dialog.Overlay
           className={cn(
             'fixed inset-0 bg-black/40',
-            ' backdrop-blur-sm z-50',
+            'backdrop-blur-sm z-50',
             'animate-in fade-in duration-200'
           )}
         />
@@ -53,9 +53,9 @@ export default function CreateNoteModal({
         <Dialog.Content
           className={cn(
             'fixed top-1/2 left-1/2 -translate-x-1/2',
-            ' -translate-y-1/2 w-full max-w-md bg-white',
-            ' rounded-2xl p-8 shadow-2xl z-50',
-            ' focus:outline-none animate-in zoom-in-95 duration-200'
+            '-translate-y-1/2 w-full max-w-md bg-white',
+            'rounded-md p-8 shadow-2xl z-50',
+            'focus:outline-none animate-in zoom-in-95 duration-200'
           )}
         >
           <div className="flex justify-between items-center mb-6">
