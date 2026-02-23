@@ -22,7 +22,7 @@ export default function DashboardPage() {
       {isLoading ? (
         <Grid container spacing={3}>
           {[1, 2, 3].map((i) => (
-            <Grid item xs={12} sm={6} md={4} key={i}>
+            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={i}>
               <Skeleton
                 variant="rectangular"
                 height={160}
@@ -35,11 +35,7 @@ export default function DashboardPage() {
         <Grid container spacing={3}>
           {notes?.map((note: any) => (
             <Grid
-              item
-              xs={12}
-              sm={6}
-              md={4}
-              lg={3}
+              size={{ xs: 12, sm: 6, md: 4, lg: 3 }}
               key={note.id}
               className={cn('w-full')}
             >

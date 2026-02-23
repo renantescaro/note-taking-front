@@ -21,4 +21,4 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/note-app-frontend:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/note-taking-front:latest

@@ -79,7 +79,7 @@ function FeatureCard({
   description: string;
 }) {
   return (
-    <Grid item xs={12} md={4}>
+    <Grid size={{ xs: 12, md: 4 }}>
       <Card
         variant="outlined"
         className="h-full hover:border-blue-300 transition-colors duration-300"
