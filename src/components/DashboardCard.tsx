@@ -6,7 +6,7 @@ import { Card, CardContent, Typography, IconButton } from '@mui/material';
 import { cn } from '@/lib/utils';
 
 interface DashboardCardProps {
-  note: { id: string; title: string; content: string };
+  note: { id: string; title: string; content: string; updated_at: string };
 }
 
 export default function DashboardCard({ note }: DashboardCardProps) {
