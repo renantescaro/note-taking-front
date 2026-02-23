@@ -48,9 +48,7 @@ export default function DashboardLayout({
         <Typography variant="h6" className={cn('font-bold')}>
           Menu
         </Typography>
-        <IconButton onClick={() => setMobileOpen(false)}>
-          <X />
-        </IconButton>
+        <IconButton onClick={() => setMobileOpen(false)}></IconButton>
       </Toolbar>
       <List className={cn('p-2 space-y-1')}>
         {menuItems.map((item) => {
